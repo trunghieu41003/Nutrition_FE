@@ -1,0 +1,305 @@
+  .dashboard {
+    max-width: 1475px;
+    padding: 20px;
+    margin-left: 240px;
+    background-color: #F2F5FD;
+    min-height: 100vh;
+    padding-top: 80px; /* Thêm khoảng trống để tránh bị che bởi header */
+  }
+
+  .section-title, .section-title1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .energy-summary,
+  .macro-targets {
+    margin-bottom: 40px;
+  }
+
+  .energy-card,
+  .macro-card {
+    
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  .energy-card {
+    height: 203px;
+  }
+
+  .macro-card {
+    height: 160px;
+  }
+
+  .progress-container,.progress-container1 {
+    display: flex;
+    align-items: center;
+  }
+  :where(.css-dev-only-do-not-override-ccdg5a).ant-progress .ant-progress-circle-trail {
+    stroke: #F2F5FD;
+
+  }
+  .progress-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+   
+  }
+
+.progress-info p{
+  margin: 0;
+}
+
+
+
+  @media (width: 768px) {
+    .dashboard {
+      margin-left: 0;
+      padding-top: 80px;
+    }
+    .progress-container1 .ant-progress{
+      margin-right: 30px;
+      margin-left: -110px;
+    }
+  
+  .progress-container1 p{
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: #1F263E;
+  font-weight: 600;
+  
+  }
+
+  .progress-info p {
+    padding-right: 200px;
+    text-align: left;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    color: #1F263E;
+    font-weight: 600;
+  }
+
+  .progress-info p:last-child {
+    font-size: 14px;
+    font-weight: 500;
+    color:#5D5E60;
+font-family: "Inter", sans-serif;
+
+}
+
+    .energy-summary,
+    .macro-targets {
+      flex-direction: column;
+      align-items:center;
+    }
+
+    .energy-card,
+    .macro-card {
+      
+      width: 470px;
+      margin-bottom: 20px;
+    }
+.macro-card{
+  height: 120px;
+}
+    .energy-card {
+      margin-left: 66px;
+    }
+    .section-title {
+      text-align: right;
+      margin-right: 240px;
+    }
+    .section-title1{
+      text-align: right;
+      margin-right: 280px;
+    }
+    .progress-container {
+      justify-content: center;
+    }
+  }
+
+
+
+  /*Khi responsive ở phone*/
+  @media (max-width: 425px) {
+    .dashboard {
+      margin-left: 0;
+      padding-top: 80px;
+    }
+    .progress-container1 .ant-progress{
+      margin-right: 20px;
+      margin-left: -60px;
+    }
+    .progress-container1 p{
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      color: #1F263E;
+      font-weight: 600;
+  
+    }
+   
+    .progress-info p {
+      padding-right: 180px;
+      text-align: left;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      color: #1F263E;
+      font-weight: 600;
+    }
+
+    .progress-info p:last-child {
+      font-size: 14px;
+      font-weight: 500;
+      color:#5D5E60;
+  font-family: "Inter", sans-serif;
+  
+  }
+    .energy-summary,
+    .macro-targets {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .energy-card,
+    .macro-card {
+      
+      width: 385px;
+      margin-bottom: 20px;
+    }
+    .macro-card{
+      height: 85px;
+    }
+    .section-title, .section-title1 {
+      text-align: center;
+    }
+
+    .progress-container {
+      justify-content: center;
+    }
+  }
+
+  /*Khi responsive ở phone 375px*/
+  @media(max-width: 375px) {
+    .progress-container1 .ant-progress{
+      margin-right: 20px;
+      margin-left: -20px;
+    }
+
+    .energy-card,
+    .macro-card {
+      width: 340px;
+      margin-bottom: 20px;
+    }
+    .progress-container1 p{
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      color: #1F263E;
+      font-weight: 600;
+    }
+   
+    .progress-info p {
+      padding-right: 130px;
+      text-align: left;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      color: #1F263E;
+      font-weight: 600;
+    }
+
+    .progress-info p:last-child {
+      font-size: 14px;
+      font-weight: 500;
+      color:#5D5E60;
+  font-family: "Inter", sans-serif;
+  
+  }
+    
+  }
+
+
+
+  /*Khi ở màn hình 1024px*/
+
+  @media (min-width: 1024px) 
+  {
+    
+    .progress-container1 .ant-progress{
+      margin-right: 20px;
+      margin-left: -12px;
+    }
+
+    .progress-container1 p{
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      color: #1F263E;
+      font-weight: 600;
+    }
+   
+    .progress-info p {
+      padding-right: 10px;
+      text-align: left;
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      color: #1F263E;
+      font-weight: 600;
+    }
+
+    .progress-info p:last-child {
+      font-size: 14px;
+      font-weight: 500;
+      color:#5D5E60;
+  font-family: "Inter", sans-serif;
+  
+  }
+
+.progress-container .ant-progress-circle-path circle{
+  stroke-width: 10px;
+  width: 10px;
+}
+}
+  
+
+@media(min-width: 1440px){
+ 
+    .progress-container1 .ant-progress{
+      margin-right: 30px;
+      margin-left: -140px;
+    }
+
+    .progress-container1 p{
+      font-family: "Inter", sans-serif;
+      font-size: 24px;
+      color: #1F263E;
+      font-weight: 600;
+    }
+   
+    .progress-info p {
+      padding-right: 100px;
+      text-align: left;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      color: #1F263E;
+      font-weight: 600;
+    }
+
+    .progress-info p:last-child {
+      font-size: 14px;
+      font-weight: 500;
+      color:#5D5E60;
+  font-family: "Inter", sans-serif;
+  
+  }
+
+.progress-container .ant-progress-circle-path circle{
+  stroke-width: 10px;
+  width: 10px;
+}
+}

@@ -1,0 +1,177 @@
+/* Container for Onboarding Steps */
+.onboard-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background styling */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../image/Image/Background_image1x.png'); /* Adjust the path */
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+/* Header Logo and Title */
+.header-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f1f1f;
+}
+
+/* Popup styling */
+.popup {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+}
+
+.popup h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.popup p {
+    font-size: 1rem;
+    color: #7a7a7a;
+    margin-bottom: 20px;
+}
+
+/* Input field styling */
+.popup input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    font-size: 1rem;
+    outline: none;
+}
+
+.popup input:focus {
+    border-color: #007bff;
+}
+
+/* Following Button */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Button group for Back/Following in steps 2 to 4 */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .popup {
+        width: 300px;
+    }
+
+    .header-logo img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Popup styling for Step 2 */
+.popup.step2 {
+    width: 450px; /* Width adjusted to match the image */
+    padding: 40px 20px; /* Adjusted padding */
+}
+
+/* Styling for radio buttons and labels */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Thay đổi để đảm bảo tất cả đều trải dài */
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.radio-group label {
+    background-color: #f0f0f0; /* Màu nền cho các label */
+    padding: 15px; /* Padding để tạo khoảng cách */
+    border-radius: 8px; /* Bo tròn các góc */
+    cursor: pointer; /* Con trỏ khi hover */
+    display: flex;
+    align-items: center; /* Canh giữa nội dung */
+}
+
+/* Radio button styling */
+.radio-group input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Button styling for Back and Following */
+.button-group {
+    display: flex;
+    flex-direction: column; /* Đặt theo hàng dọc */
+    gap: 15px; /* Khoảng cách giữa các nút */
+}
+
+.back-btn,
+.following-btn {
+    width: 100%; /* Chiều rộng 100% */
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover,
+.following-btn:hover {
+    background-color: #e6f7ff; /* Light blue on hover */
+}
+
+.following-btn {
+    background-color: #007bff; /* Nền màu xanh cho nút Following */
+    border: none; /* Bỏ viền */
+    color: white; /* Chữ màu trắng */
+}
+
+.following-btn:hover {
+    background-color: #0056b3; /* Đậm màu khi hover */
+}
