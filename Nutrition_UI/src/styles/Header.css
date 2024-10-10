@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.header {
+    display: flex;
+    justify-content: left; /* Ban đầu chữ Dashboard nằm bên trái */
+    align-items: center;
+    padding-top: 10px;
+    padding-left: 20px;
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    width: 1430px; /* Trừ phần width của sidebar */
+    height: 60px;
+    margin-left: 242px; /* Đặt header bắt đầu từ bên phải của sidebar */
+  background-color: white;
+  position:fixed;
+z-index: 1000;
+  }
+  
+  .hamburger-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Hamburger và title sẽ co dãn theo tỷ lệ */
+  }
+  
+  .hamburger {
+    display: none;
+    margin-right: 15px;
+    margin-top: 8px;
+  }
+  
+  .header-title {
+    margin-top: -8px;
+    font-family: "Inter", sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #1F263E;
+    text-align: left;
+    flex-grow: 1; /* Giúp chữ Dashboard co dãn và di chuyển */
+  }
+  
+  @media (max-width: 1200px) {
+    .header {
+      width: calc(100% - 240px);
+      justify-content: center; /* Khi thu nhỏ màn hình, Dashboard bắt đầu di chuyển về giữa */
+      margin-left: 242px;
+    }
+  }
+  
+  @media (width: 768px) {
+    .header {
+      width: 105%;
+      margin-left: -75px;
+      padding: 10px 20px;
+      justify-content: center; /* Khi màn hình nhỏ, Dashboard ở giữa */
+      z-index: 10;
+    }
+  
+    .header-title {
+      margin-left: -35px;
+      text-align: center;
+      font-size: 20px;
+    }
+  
+    .hamburger {
+      display: block;
+      cursor: pointer;
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 425px) {
+    .header {
+      width: 100%;
+      margin-left: 0;
+      padding: 10px 20px;
+      justify-content: center; /* Khi màn hình nhỏ, Dashboard ở giữa */
+      z-index: 10;
+    }
+  
+    .header-title {
+      text-align: center;
+      font-size: 20px;
+    }
+  
+    .hamburger {
+      display: block;
+      cursor: pointer;
+      font-size: 24px;
+    }
+  }
+
+  .avatar-container {
+    display: flex;
+    align-items: center;
+    margin-right: 25px;
+    position: relative; /* For dropdown positioning */
+  }
+  
+  .avatar-container .avatar-name {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    color: #1F263E;
+    font-weight: 500;
+  }
+  
+  .dropdown-toggle {
+    cursor: pointer;
+    font-size: 16px;
+    width: 32px; /* Adjust for circular shape */
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Circular shape */
+    background-color: #f0f0f0; /* Background for the circle */
+    border: 1px solid #d9d9d9; /* Optional border for more definition */
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 60px; /* Position below the avatar and text */
+    right: 0;
+    width: 162px;
+    height: 93px;
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+  
+  .dropdown-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #1F263E;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  @media (min-width: 1440px) {
+    .avatar-container {
+      margin-right: 280px;
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .avatar-container {
+      margin-right: 50px;
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .avatar-container {
+      position: absolute;
+      right: -20px;
+      top: 12px;
+    }
+    .header{
+      height: 45px;
+    }
+  }
+  
+  @media (max-width: 425px) {
+    @media (max-width: 425px) {
+      .avatar-container {
+        position: absolute;
+        right: 25px;
+        top: 10px;
+      }
+    
+      .avatar-name, .dropdown-toggle {
+        display: none; /* Hide text and toggle at 425px */
+      }
+    }
+  }
+  
+  @media (max-width: 375px) {
+    .avatar-container {
+      position: absolute;
+      right: 25px;
+      top: 10px;
+    }
+  }
+  
