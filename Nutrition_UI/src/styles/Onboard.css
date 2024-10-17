@@ -1,85 +1,610 @@
-/* Container for Onboarding Steps */
-.onboard-container {
-    position: relative;
-    height: 100vh;
+    /* Container for Onboarding Steps */
+    .onboard-container {
+        position: relative;
+        height: 1024px;
+       
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Background styling */
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('../image/Image/Background_image1x.png'); /* Adjust the path */
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+    }
+
+    /* Header Logo and Title */
+    .header-logo {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .header-logo img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .logo-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #1f1f1f;
+    }
+
+    /* Popup styling */
+    .popup {
+        margin-bottom: 380px;
+        background-color: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 450px;
+        height: 314px;
+    }
+
+    .popup h2 {
+        font-size: 1.8rem;
+        margin-top: -16px;
+        margin-bottom: 12px;
+    }
+
+    .popup p {
+      
+        font-size: 20px;
+        color: #7a7a7a;
+        margin-bottom: 40px;
+    }
+.popup p.error{
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+    /* Input field styling */
+    .popup input {
+        width: 100%;
+        height: 30px;
+        padding: 12px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        border: 1px solid #dcdcdc;
+        font-size: 18px;
+        outline: none;
+    }
+
+    .popup input:focus {
+        border-color: #007bff;
+    }
+
+    /* Following Button */
+    button {
+        font-size: 20px;
+        margin-top: 20px;
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Button group for Back/Following in steps 2 to 4 */
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .popup {
+            width: 300px;
+        }
+
+        .header-logo img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .logo-title {
+            font-size: 1.2rem;
+        }
+
+        button{
+            margin-top: 2px;
+        }
+    }
+
+    /*popup in mobile */
+
+    @media (max-width: 425px) {
+        .onboard-container {
+            height: 812px;
+        }
+       .popup h2{
+            margin-top: 200px;
+        }
+        .popup {
+            margin-top: 400px;
+            width: 425px;
+            height:812px;
+        }
+  .header-logo {
+           z-index: 1100;
+        }
+        .header-logo img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .logo-title {
+            font-size: 1.2rem;
+        }
+
+        button{
+            margin-top: 270px;
+        }
+    }
+
+
+    /* Popup styling for Step 2 */
+    
+    @media (max-width: 768px)
+    {
+        .popup p.error{
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .popup.step2 {
+           height: 425px;
+            width: 450px;
+            
+        }
+       .goal-btn{
+        margin-top: 20px;
+       }
+button.back-btn{
+        margin-top: 25px;
+       }
+       button.following-btn{
+        margin-top: 20px;
+       }
+    }
+
+    @media (max-width:1024px)
+    {
+        .popup.step2 {
+            margin-top: 150px;
+            max-width: 420px; /* Width adjusted to match the image */
+            height: 420px;
+            padding: 40px 20px; /* Adjusted padding */
+        }
+      
+    }
+
+    @media (max-width: 425px) {
+        .popup{
+            box-shadow: none; /* Remove the shadow */
+        }
+        .onboard-container {
+            height: 100vh; /* Using full viewport height to ensure responsiveness */
+        }
+        .popup.step2 {
+            top: 0;
+            margin: auto; /* Centering the popup vertically */
+            width: 100%; /* Allowing the popup to take up full width */
+            max-width: 400px; /* Restricting the max width of the popup */
+            height: 812px; /* Let the content determine the height */
+            padding: 20px; /* Adjust padding for smaller devices */
+        }
+    
+        button.back-btn {
+            margin-top: 170px;
+        }
+        button.following-btn {
+            margin-bottom: 30px;
+        }
+        /* Adjust the header and other components accordingly */
+        .header-logo img {
+            width: 30px;
+            height: 30px;
+        }
+    
+        .logo-title {
+            font-size: 1.2rem;
+        }
+       
+    }
+    
+   
+
+   @media (min-width: 1440px)
+   {
+    .popup.step2{
+        margin-top: 150px;
+        max-width: 420px; /* Width adjusted to match the image */
+        height: 420px;
+        padding: 40px 20px; /* Adjusted padding */
+    }
+       
+    
+    }
+
+
+   
+
+   /* Styling for the radio buttons and labels */
+.radio-group {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
-/* Background styling */
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../image/Image/Background_image1x.png'); /* Adjust the path */
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-}
-
-/* Header Logo and Title */
-.header-logo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+.radio-group label {
+    background-color: white; /* Background for the options */
+    padding: 15px; /* Add padding for spacing */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: flex-start; /* Align content at the start */
 }
 
-.header-logo img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
+.radio-group input[type="radio"] {
+    margin-right: 10px; /* Spacing for radio button */
 }
 
-.logo-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #1f1f1f;
-}
 
-/* Popup styling */
-.popup {
-    background-color: white;
-    padding: 40px;
+    /* Button styling for Back and Following */
+    .button-group {
+        display: flex;
+        flex-direction: column; /* Đặt theo hàng dọc */
+        gap: 15px; /* Khoảng cách giữa các nút */
+    }
+
+    
+
+    /* Định dạng các nút mục tiêu "Gain weight" và "Lose weight" để phù hợp với hình */
+    .button-group-goal {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        margin-bottom: 20px;
+    }
+
+    .goal-btn {
+        width: 100%;
+        padding: 15px;
+        background-color: #ffffff;
+        border: 1px solid #BABCC3;
+        border-radius: 8px;
+        color: black;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .goal-btn.selected {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .goal-btn:hover {
+        background-color: #4a9cf5;
+        color: white;
+    }
+
+    /* CSS cho các nút "Back" và "Following" */
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .back-btn {
+        margin-top: 14px;
+        background-color: #ffffff;
+        border: 1px solid #007bff;
+        color: #007bff;
+        padding: 10px 30px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: -16px;
+    }
+
+    .back-btn:hover {
+        background-color: #f0f0f0;
+    }
+
+    .following-btn {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 30px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .following-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .following-btn:disabled {
+        background-color: #e0e0e0;
+        cursor: not-allowed;
+    }
+
+
+    /* Styling for the popup in Step 3 */
+.popup.step3 {
+    margin-top: 400px;
+    width: 450px;
+    height: 710px;
+    padding: 40px 20px;
+    background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 400px;
+    
 }
 
-.popup h2 {
+@media (max-width: 425px) {
+    button.following-btn {
+        margin-bottom: 30px;
+    }
+}
+
+/* Header and description text */
+.popup.step3 h2 {
     font-size: 1.8rem;
-    margin-bottom: 10px;
-}
-
-.popup p {
-    font-size: 1rem;
-    color: #7a7a7a;
     margin-bottom: 20px;
 }
 
-/* Input field styling */
-.popup input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 10px;
+.popup.step3 p {
+    margin-top: -6px;
+    font-size: 18px;
+    color: #7a7a7a;
+    margin-bottom: 50px;
+}
+
+/* Radio button group */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.radio-option {
+    background-color: #f7f7f7;
+    padding: 15px;
     border-radius: 8px;
-    border: 1px solid #dcdcdc;
-    font-size: 1rem;
-    outline: none;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.popup input:focus {
-    border-color: #007bff;
+.radio-option:hover {
+    background-color: #e6f7ff;
 }
 
-/* Following Button */
-button {
+.radio-option input[type="radio"] {
+    margin-right: 10px;
+    display: none;
+}
+
+.option-title {
+    display: flex;
+    align-self: center;
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.activity-desc {
+    font-size: 0.9rem;
+    color: #7a7a7a;
+}
+
+/* Selected state for radio options */
+.radio-option input[type="radio"]:checked + .option-title {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Button styling */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+
+/* Popup styling for Step 4 */
+.popup.step4 {
+  
+    width: 400px;
+    padding: 40px 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 350px;
+    height: 713px;;
+}
+
+.popup.step4 h2 {
+    font-size: 1.8rem;
+    margin-bottom: 50px;
+}
+
+.input-field.happy,.input-field.heights, 
+.input-field.weights, .input-field.weight-goal {
+    height: 48px;
+    width: 320px;
+}
+
+
+
+
+/* Gender group styling */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.input-label {
+    font-size: 0.9rem;
+    color: black;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+/* Gender selection styling */
+.gender-group {
+    margin-top: -10px;
+    margin-bottom: -20px;
+    display: flex;
     width: 100%;
+}
+
+.gender-group label {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: black;
+}
+
+
+
+.gender-group input {
+margin-top: 20px;
+    margin-right: 10px;
+    width: 25px;  /* Tăng kích thước của hình tròn nút radio */
+    height: 25px;  /* Tăng kích thước của hình tròn nút radio */
+}
+
+.input-height{
+    width: 100px;
+}
+
+/* Input fields styling */
+.input-field {
+    width: 200%;
+    height: 98px;  /* Tăng chiều cao của các khung input */
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 18px;  /* Tăng kích thước chữ trong các khung input */
+    box-sizing: border-box;
+}
+
+.selected {
+    color: black;  /* Khi radio được chọn */
+    font-weight: bold;
+}
+
+.unselected {
+    color: gray;   /* Khi radio không được chọn */
+}
+
+
+/* Responsive for mobile devices (max-width: 425px) */
+@media (max-width: 425px) {
+
+.popup h2{
+    margin-top: 600px;
+}
+    
+    .popup.step4 {
+        margin: 0 auto;  /* Center the popup */
+        width: 100%;  /* Full width */
+        max-width: 400px; /* Limit max-width */
+        height: auto;  /* Let the height adjust based on content */
+        padding: 20px;  /* Adjust padding for small screens */
+    }
+    
+    .input-field.happy,
+    .input-field.heights, 
+    .input-field.weights, 
+    .input-field.weight-goal {
+        width: 100%;  /* Make inputs take full width */
+        height: 48px;
+        margin-bottom: 15px;  /* Adjust spacing between inputs */
+    }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 15px; /* Add space between buttons */
+        margin-top: 20px;
+    }
+
+    .gender-group {
+        display: flex; /* Stack gender options vertically */
+  
+    }
+
+    .gender-group label {
+        margin-bottom: 10px; /* Add space between labels */
+    }
+
+    button.back-btn {
+        margin-top: 80px; /* Adjust top margin */
+    }
+}
+
+.popup.step5 span{
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    
+}
+
+button.get-started-btn {
+    margin-top: 80px;
+    cursor: pointer;
+}
+@media (max-width: 425px) {
+    .onboard-container {
+        height: 500px;
+    }
+    .popup.step5 {
+        margin-top: 350px;
+      box-shadow: none;
+      height: 520px;
+    }
+
+    .popup.step5 h2 {
+      margin-top: 180px;
+    }
+button.get-started-btn {
+    margin-top: 50px;
+    width: 100%;
+    height: auto;
     padding: 12px;
     background-color: #007bff;
     color: white;
@@ -87,91 +612,4 @@ button {
     border-radius: 8px;
     cursor: pointer;
 }
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Button group for Back/Following in steps 2 to 4 */
-.button-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-@media (max-width: 768px) {
-    .popup {
-        width: 300px;
-    }
-
-    .header-logo img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .logo-title {
-        font-size: 1.2rem;
-    }
-}
-
-/* Popup styling for Step 2 */
-.popup.step2 {
-    width: 450px; /* Width adjusted to match the image */
-    padding: 40px 20px; /* Adjusted padding */
-}
-
-/* Styling for radio buttons and labels */
-.radio-group {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch; /* Thay đổi để đảm bảo tất cả đều trải dài */
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.radio-group label {
-    background-color: #f0f0f0; /* Màu nền cho các label */
-    padding: 15px; /* Padding để tạo khoảng cách */
-    border-radius: 8px; /* Bo tròn các góc */
-    cursor: pointer; /* Con trỏ khi hover */
-    display: flex;
-    align-items: center; /* Canh giữa nội dung */
-}
-
-/* Radio button styling */
-.radio-group input[type="radio"] {
-    margin-right: 10px;
-}
-
-/* Button styling for Back and Following */
-.button-group {
-    display: flex;
-    flex-direction: column; /* Đặt theo hàng dọc */
-    gap: 15px; /* Khoảng cách giữa các nút */
-}
-
-.back-btn,
-.following-btn {
-    width: 100%; /* Chiều rộng 100% */
-    padding: 12px;
-    border-radius: 8px;
-    border: 2px solid #007bff;
-    background-color: white;
-    color: #007bff;
-    transition: background-color 0.3s ease;
-}
-
-.back-btn:hover,
-.following-btn:hover {
-    background-color: #e6f7ff; /* Light blue on hover */
-}
-
-.following-btn {
-    background-color: #007bff; /* Nền màu xanh cho nút Following */
-    border: none; /* Bỏ viền */
-    color: white; /* Chữ màu trắng */
-}
-
-.following-btn:hover {
-    background-color: #0056b3; /* Đậm màu khi hover */
 }
