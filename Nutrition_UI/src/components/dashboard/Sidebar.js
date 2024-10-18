@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/Sidebar.css'; // Import your CSS styles
 import { Menu } from 'antd';
-import { DashboardOutlined, AppstoreOutlined, FileTextOutlined, SettingOutlined, MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined } from '@ant-design/icons';
 import logoImage from '../../dashboard_image/logo.png';
-import dashboardIcon from '../../dashboard_image/dashboard_icon.png';
+import dashboardIcon from '../../dashboard_image/Dashboard.svg';
 import mealIcon from '../../dashboard_image/mymeal_icon.png';
 import reportIcon from '../../dashboard_image/MyReport_icon.png';
-
+import settIcon from '../../dashboard_image/Settings.svg';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const SideBar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false); // Sidebar is visible initially
@@ -39,30 +40,37 @@ const SideBar = () => {
           <MenuOutlined />
         </div>
       )}
-      
+
       {/* Sidebar */}
       <div className={`sidebar ${isMobile && isCollapsed ? 'collapsed' : ''}`}>
 
-      <div className="logo">
+        <div className="logo">
           <img src={logoImage} alt="Logo" className="logo-img" />
           <span className="logo-text">Nutritioners</span>
         </div>
-        
+
         <Menu mode="vertical" defaultSelectedKeys={['1']} className="menu">
           <Menu.Item key="1">
-          <img src={dashboardIcon} alt="Dashboard Icon" style={{ width: '20px', marginRight: '10px' }} />
-            Dashboard
+            <Link to="/dashboard">
+              <img src={dashboardIcon} alt="Dashboard Icon" style={{ width: '20px', marginRight: '10px' }} />
+              Dashboard
+            </Link>
           </Menu.Item>
           <Menu.Item key="2">
-          <img src={mealIcon} alt="My Meal Icon" style={{ width: '20px', marginRight: '10px' }} />
-            My Meal
+            <Link to="/my-meal">
+              <img src={mealIcon} alt="My Meal Icon" style={{ width: '20px', marginRight: '10px' }} />
+              My Meal
+            </Link>
           </Menu.Item>
           <Menu.Item key="3">
-          <img src={reportIcon} alt="My Report Icon" style={{ width: '20px', marginRight: '10px' }} />
+            <img src={reportIcon} alt="My Report Icon" style={{ width: '20px', marginRight: '10px' }} />
             My Report
           </Menu.Item>
-          <Menu.Item key="4" icon={<SettingOutlined />}>
-            Settings
+          <Menu.Item key="4">
+            <Link to="/settings">
+              <img src={settIcon} alt="My Setting Icon" style={{ width: '20px', marginRight: '10px' }} />
+              Settings
+            </Link>
           </Menu.Item>
         </Menu>
       </div>
