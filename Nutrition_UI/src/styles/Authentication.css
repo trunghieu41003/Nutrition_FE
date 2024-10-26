@@ -1,0 +1,132 @@
+/* Container for Authentication */
+.authentication-container {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background styling */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../image/Image/Background_image1x.png'); /* Adjust the path */
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+/* Header Logo and Title */
+.header-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f1f1f;
+}
+
+/* Authentication Popup styling */
+.auth-popup {
+    margin-top: 500px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 450px;
+    position: relative; /* Make positioning relative for centering */
+    top: 0; /* Reset any previous top positioning */
+    transform: translateY(-50%); /* Center vertically */
+}
+
+/* Center the popup */
+.authentication-container {
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+/* Adjustments for different screen sizes */
+@media (max-width: 1440px) {
+    .auth-popup {
+        margin-top: 500px;
+        width: 80%; /* Make the popup responsive */
+        max-width: 450px; /* Maximum width for larger screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .auth-popup {
+        margin-top: 500px;
+        width: 90%; /* Make the popup responsive */
+        max-width: 400px; /* Maximum width for smaller screens */
+    }
+    .authentication-container {
+        height: 120vh; /* Full viewport height */
+    }
+}
+
+/* Popup titles and text styling */
+.auth-popup h2 {
+    font-size: 1.8rem;
+    margin-top: -16px;
+    margin-bottom: 12px;
+}
+
+.auth-popup p {
+    font-size: 20px;
+    color: #7a7a7a;
+    margin-bottom: 40px;
+}
+
+.auth-popup input {
+    width: 100%;
+    height: 30px;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    font-size: 18px;
+    outline: none;
+}
+
+.auth-popup input:focus {
+    border-color: #007bff;
+}
+
+.auth-popup .error {
+    color: red;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+/* Button styling */
+.auth-popup button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.auth-popup button:hover {
+    background-color: #0056b3;
+}
