@@ -1,0 +1,91 @@
+.setting {
+    margin-left: 250px;
+    margin-top: 20px;
+    padding-right: 50px;
+    width: calc(100% - 250px);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.account {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.profile {
+    margin-top: 30px;
+}
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Style the label to act as a custom circular checkbox */
+input[type="checkbox"]+label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/*  (unchecked state) */
+input[type="checkbox"]+label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background-color: white;
+}
+
+/* Create a smaller filled circle when checkbox is checked */
+input[type="checkbox"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 1.5px;
+    top: 1.5px;
+    width: 13px;
+    height: 13px;
+    background-color: #0072FD;
+    border-radius: 50%;
+}
+
+.height {
+    position: relative;
+    display: inline-block;
+
+}
+
+label[for="no2-box"],
+label[for="mor2-box"],
+label[for="nor2-box"],
+label[for="ver2-box"] {
+    font-size: 12px;
+    padding-left: 25px;
+}
+
+.setting {
+    background-color: rgb(242, 245, 253);
+
+}
+
+.account,
+.profile,
+.goal {
+    background-color: white;
+    margin: 95px 15px -70px 15px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
