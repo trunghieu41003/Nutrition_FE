@@ -1,60 +1,96 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/Header.css';
-import { Avatar, Dropdown, Menu } from 'antd';
+import { Avatar } from 'antd';
 import { UserOutlined, DownOutlined } from '@ant-design/icons';
 import maskImage from '../../dashboard_image/Mask.png';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
+    const [isDropdownVisible, setDropdownVisible] = useState(false);
+    const [userName, setUserName] = useState('');
+    const navigate = useNavigate();
 
-  const toggleDropdown = () => {
-    setDropdownVisible(!isDropdownVisible);
-  };
+    const toggleDropdown = () => {
+        setDropdownVisible(!isDropdownVisible);
+    };
 
-  const handleMenuClick = (e) => {
-    // Optionally handle menu item click here
-    console.log("Menu item clicked:", e.key);
-  };
+    const handleDropdownClick = (e) => {
+        e.stopPropagation();
+    };
 
-  const menu = (
-    <Menu onClick={handleMenuClick}>
-      <Menu.Item key="1">
-        Manage Account
-      </Menu.Item>
-      <Menu.Item key="2">
-        Log out
-      </Menu.Item>
-    </Menu>
-  );
+    const handleMenuClick = (option) => {
+        if (option === 'manageAccount') {
+            navigate('/settings');
+        } else if (option === 'logout') {
+            localStorage.removeItem('token');
+            localStorage.removeItem('userId');
+            navigate('/authentication');
+        }
+        setDropdownVisible(false);
+    };
 
-  // Handle clicks inside the dropdown to prevent closing
-  const handleDropdownClick = (e) => {
-    e.stopPropagation(); // Prevents the toggleDropdown from being triggered
-  };
+    const fetchUserData = async () => {
+        const userId = localStorage.getItem('userId');
+        const token = localStorage.getItem('token');
 
-  return (
-    <div className="header">
-      <div className="hamburger-container">
-        <div className="hamburger" />
-        <div className="header-title">Dashboard</div>
-      </div>
+        if (!userId || !token) {
+            console.error('User ID or token does not exist in local storage');
+            return;
+        }
 
-      <div className="avatar-container" onClick={toggleDropdown}>
-        <Avatar size={40} src={maskImage} icon={<UserOutlined />} />
-        <span className="avatar-name">Moni Roy</span>
-        <div className="dropdown-toggle">
-          <DownOutlined />
+        try {
+            const response = await fetch(`http://localhost:3000/api/auth/users`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const userData = await response.json();
+
+            if (response.ok && userData.user) {
+                setUserName(userData.user.name);
+            } else {
+                console.error("Error retrieving user information:", userData.message);
+            }
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+        }
+    };
+
+    useEffect(() => {
+        const userId = localStorage.getItem('userId');
+        const token = localStorage.getItem('token');
+        
+        if (userId && token) {
+            fetchUserData();
+        }
+    }, []);
+
+    return (
+        <div className="header">
+            <div className="hamburger-container">
+                <div className="hamburger" />
+                <div className="header-title">Dashboard</div>
+            </div>
+
+            <div className="avatar-container" onClick={toggleDropdown}>
+                <Avatar size={40} src={maskImage} icon={<UserOutlined />} />
+                <span className="avatar-name">{userName}</span>
+                <div className="dropdown-toggle">
+                    <DownOutlined />
+                </div>
+
+                {isDropdownVisible && (
+                    <div className="dropdown-menu" onClick={handleDropdownClick}>
+                        <div className="dropdown-item" onClick={() => handleMenuClick('manageAccount')}>Manage Account</div>
+                        <div className="dropdown-item" onClick={() => handleMenuClick('logout')}>Log out</div>
+                    </div>
+                )}
+            </div>
         </div>
-
-        {isDropdownVisible && (
-          <div className="dropdown-menu" onClick={handleDropdownClick}>
-            <div className="dropdown-item">Manage Account</div>
-            <div className="dropdown-item">Log out</div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Header;
