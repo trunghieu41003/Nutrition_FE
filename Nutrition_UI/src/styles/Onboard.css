@@ -72,7 +72,7 @@
 }
     /* Input field styling */
     .popup input {
-        width: 100%;
+        width: 95%;
         height: 30px;
         padding: 12px;
         margin-bottom: 20px;
@@ -381,7 +381,7 @@ button.back-btn{
     margin-top: -6px;
     font-size: 18px;
     color: #7a7a7a;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 /* Radio button group */
@@ -612,4 +612,151 @@ button.get-started-btn {
     border-radius: 8px;
     cursor: pointer;
 }
+}
+
+
+@media (max-width: 425px) {
+    .onboard-container {
+        height: 100px;
+    }
+    .popup.step6 {
+        margin-top: 750px;
+      box-shadow: none;
+      height: 220px;
+    }
+    button.google-signup{
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .popup.step6 p.error{
+        margin-top: 20px;
+        font-size: 16px;
+    }
+    .terms-checkbox label{
+        margin-top: 20px;
+    }
+    .popup.step6 h2 {
+      margin-top: 450px;
+    }
+button.following-btn {
+    margin-top: 80px;
+}
+
+button.google-signup:hover{
+    color: white;
+    background-color: #007bff;
+    border: 1px solid white
+}
+
+}
+
+.popup.step6{
+    height: 480px;
+    margin-top: 140px;
+}
+
+.popup.step6 h2,
+.popup.step6 p {
+   display: flex;
+   justify-content: start;
+}
+
+.popup.step6 p.error{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: -30px;
+    font-size: 20px;
+}
+.popup.step6 span {
+   color: black;    
+   margin-left: 10px;
+   text-decoration: none;
+}
+button.google-signup{
+    color :black;
+    border: 1px solid #1F263E;
+}
+button.google-signup:hover{
+    color: white;
+    background-color: #007bff;
+    border: 1px solid white
+}
+/*case6*/
+.terms-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.custom-checkbox {
+    width: 16px; /* Kích thước ô vuông */
+    height: 16px;
+    border: 2px solid #ccc; /* Màu viền */
+    border-radius: 0; /* Đảm bảo là ô vuông */
+    display: inline-block;
+    position: relative;
+    background-color: white; /* Màu nền mặc định */
+}
+
+.custom-checkbox.checked {
+    background-color: #007bff; /* Màu nền khi được chọn */
+    border-color: #007bff;
+}
+
+.custom-checkbox.checked::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg); /* Tạo dấu tick */
+}
+
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.divider::before {
+    margin-right: 10px;
+}
+
+.divider::after {
+    margin-left: 10px;
+}
+
+.google-signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #757575;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 100%;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.google-signup img {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
 }

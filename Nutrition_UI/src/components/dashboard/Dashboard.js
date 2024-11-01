@@ -86,7 +86,7 @@ const calorieFormat = (calories) => (
             <div className="progress-container">
             <div className="progress-info">
                 <p>345/453 (g)</p>
-                <p>Protein</p>
+                <p>Net Carb</p>
               </div>
               <Progress
                 type="circle"
@@ -105,7 +105,7 @@ const calorieFormat = (calories) => (
             <div className="progress-container">
             <div className="progress-info">
                 <p>345/453 (g)</p>
-                <p>Protein</p>
+                <p>Fat</p>
               </div>
               <Progress
                 type="circle"

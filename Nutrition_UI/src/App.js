@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from 'react';
 import Header from './components/dashboard/Header';
 import SideBar from './components/dashboard/Sidebar';
@@ -31,16 +32,22 @@ const App = () => {
                         element={<Authentication onComplete={completeAuthentication} />} 
                     />
                     
-                    {/* Root route for Onboarding or Redirecting */}
+                   
+                    <Route 
+                        path="/onboard" 
+                        element={<Onboard onComplete={completeOnboarding} />} 
+                    />
+
+                    {/* Root route redirect */}
                     <Route 
                         path="/" 
                         element={
                             !isOnboardingComplete ? (
-                                <Onboard onComplete={completeOnboarding} />
+                                <Navigate to="/onboard" />
                             ) : !isAuthenticated ? (
-                                <Navigate to="/authentication" /> // Redirect to Authentication if not authenticated
+                                <Navigate to="/authentication" />
                             ) : (
-                                <Navigate to="/dashboard" /> // Redirect to Dashboard if authenticated and onboarding complete
+                                <Navigate to="/dashboard" />
                             )
                         } 
                     />
@@ -56,7 +63,7 @@ const App = () => {
                                     <Dashboard />
                                 </>
                             ) : (
-                                <Navigate to="/authentication" /> // Redirect to Authentication if not authenticated
+                                <Navigate to="/authentication" />
                             )
                         }
                     />
