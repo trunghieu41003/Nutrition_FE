@@ -7,8 +7,6 @@ import gg_logo from '../../image/Icon/gg_icon.png';
 const Authentication = ({ onComplete }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [newPassword, setNewPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     const [mode, setMode] = useState('login'); // "login", "forgotPassword", or "resetPassword"
@@ -35,9 +33,9 @@ const Authentication = ({ onComplete }) => {
                 },
                 body: JSON.stringify({ email, password }),
             });
-    
+
             const data = await response.json();
-    
+
             if (response.ok) {
                 localStorage.setItem('token', data.token);
                 
@@ -48,7 +46,7 @@ const Authentication = ({ onComplete }) => {
                         'Authorization': `Bearer ${data.token}`,
                     },
                 });
-    
+
                 const userData = await userResponse.json();
                 if (userResponse.ok) {
                     localStorage.setItem('userId', userData.user.id); // Store userId in localStorage
@@ -69,16 +67,10 @@ const Authentication = ({ onComplete }) => {
             setError('An error has occurred. Please try again.');
         }
     };
-    
 
-    // Handle forgot password logic
     const handleForgotPassword = async () => {
         if (!email) {
-            setError('Please enter email');
-            return;
-        }
-        if (!isEmailValid(email)) {
-            setError('Email cannot contain special characters');
+            setError('Please enter your email');
             return;
         }
         try {
@@ -89,50 +81,18 @@ const Authentication = ({ onComplete }) => {
                 },
                 body: JSON.stringify({ email }),
             });
-            const data = await response.json();
-            if (response.ok) {
-                setMessage('Check your email for password reset instructions');
-                setError('');
-                setMode('resetPassword');
-            } else {
-                setError(data.message || 'Gửi email đặt lại mật khẩu không thành công');
-            }
-        } catch (err) {
-            console.error('Error during reset', err);
-            setError('An error has occurred. Please try again.');
-        }
-    };
-
-    // Handle reset password logic
-    const handleResetPassword = async () => {
-        if (!newPassword || !confirmPassword) {
-            setError('Please fill out both fields');
-            return;
-        }
-        if (newPassword !== confirmPassword) {
-            setError('Passwords dont match');
-            return;
-        }
-        try {
-            const response = await fetch('http://localhost:3000/api/users/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password: newPassword }),
-            });
 
             const data = await response.json();
+
             if (response.ok) {
-                setMessage('Reset password successfully');
+                setMessage('Password reset email sent successfully! Please check your email.');
                 setError('');
-                setMode('login');
             } else {
-                setError(data.message || 'Password reset failed');
+                setError(data.message || 'Failed to send reset email');
             }
         } catch (err) {
-            console.error('An error occurred during the password change process', err);
-            setError('An error has occurred. Please try again.');
+            console.error('Error sending reset email:', err);
+            setError('An error occurred. Please try again later.');
         }
     };
 
@@ -151,7 +111,7 @@ const Authentication = ({ onComplete }) => {
                         <h2>Welcome back</h2>
                         <p>
                             You haven't had an account? &nbsp;
-                            <Link to="/onboard?step=6"><span>Sign up</span></Link>
+                            <Link to="/onboard"><span>Sign up</span></Link>
                         </p>
                         <input
                             type="email"
@@ -188,7 +148,7 @@ const Authentication = ({ onComplete }) => {
                     <>
                         <h2>Forgot password</h2>
                         <p>
-                        Enter the email you used to create your account so we can send you instructions on how to reset your password.
+                            Enter the email you used to create your account so we can send you instructions on how to reset your password.
                         </p>
                         <input
                             type="email"
@@ -197,40 +157,12 @@ const Authentication = ({ onComplete }) => {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                         {error && <p className="error">{error}</p>}
-                        <button onClick={handleForgotPassword}>Resend Email</button>
+                        <button onClick={handleForgotPassword}>Send Email</button>
                         {message && <p className="success">{message}</p>}
 
                         <button onClick={() => setMode('login')} className="back-to-login">
                             Back to login
                         </button>
-                    </>
-                )}
-
-                {mode === 'resetPassword' && (
-                    <>
-                        <h2>Đặt lại mật khẩu</h2>
-                        <p>Chọn một mật khẩu mới cho tài khoản của bạn</p>
-                        <input
-                            type="password"
-                            placeholder="Mật khẩu mới"
-                            value={newPassword}
-                            onChange={(e) => setNewPassword(e.target.value)}
-                        />
-                        <input
-                            type="password"
-                            placeholder="Xác nhận mật khẩu"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                        />
-                        {error && <p className="error">{error}</p>}
-
-                        <button onClick={() => setMode('login')} className="back-to-login">
-                            Quay lại đăng nhập
-                        </button>
-                        <button onClick={handleResetPassword} className="reset-password">
-                            Đặt lại mật khẩu
-                        </button>
-                        {message && <p className="success">{message}</p>}
                     </>
                 )}
             </div>

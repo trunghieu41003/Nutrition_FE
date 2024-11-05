@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import edit from "../../image/setting_image/Edit.svg";
 import { DatePicker, message } from 'antd';
 import '../../styles/Setting.css';
@@ -19,37 +19,53 @@ const Setting = () => {
 
     const token = localStorage.getItem("token");
 
+    console.log("Token:", token);
+    
     const [modal1, setModal1] = useState(false);
     const [modal2, setModal2] = useState(false);
     const [modal3, setModal3] = useState(false);
 
 
     // Fetch user data (GET request)
-    useEffect(() => {
-        axios.get(`http://localhost:3000/api/auth/users`, {
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => {
-            const data = response.data.user;
-            const goalData = response.data.goal[0]; // Use the first goal if available
+useEffect(() => {
+    const fetchUserData = async () => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/auth/users`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            const data = await response.json();
             console.log('User Data:', data);
-           
-            setName(data.name);
-            setEmail(data.email);
-            setGender(data.gender);
-            setBirthday(data.birthday);
-            setHeight(data.height);
-            setWeight(data.weight);
-            setGoalWeight(goalData ? goalData.weight_goal : "");
-            setActivityLevel(data.activity_level);
-        })
-        .catch(error => {
+            if (response.ok) {
+                const userData = data.user;
+                const goalData = data.goal; // Use the first goal if available
+                console.log('User Data:', userData);
+                console.log('Goal Data:', goalData);
+
+                setName(userData.name);
+                setEmail(userData.email);
+                setGender(userData.gender);
+                setBirthday(userData.birthday);
+                setHeight(userData.height);
+                setWeight(userData.weight);
+                setGoalWeight(goalData ? goalData.weight_goal : "");
+                setActivityLevel(userData.activity_level);
+            } else {
+                console.error('Failed to fetch user data:', data);
+            }
+        } catch (error) {
             console.error("Error fetching user data:", error);
-        });
-    }, [token]);
+        }
+    };
+
+    fetchUserData();
+}, [token]);
+
+
 
     const toggleModal1 = () => setModal1(!modal1);
     const toggleModal2 = () => setModal2(!modal2);
@@ -69,21 +85,28 @@ const Setting = () => {
             goal: [{ weight_goal: goalWeight }]
         };
 
-        axios.put(`http://localhost:3000/api/auth/users`, updatedData, {
+        fetch(`http://localhost:3000/api/auth/users`, {
+            method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify(updatedData)
         })
-        .then(() => {
-            message.success("Information updated successfully!");
-            setIsDisabled(true); // Disable fieldsets after update
+        .then(response => {
+            if (response.ok) {
+                message.success("Information updated successfully!");
+                setIsDisabled(true); // Disable fieldsets after update
+            } else {
+                throw new Error("Update failed");
+            }
         })
         .catch(error => {
             console.error("Error updating user data:", error);
             message.error("Update failed, please try again.");
         });
     };
+
 
     return (
         <div className="setting">
