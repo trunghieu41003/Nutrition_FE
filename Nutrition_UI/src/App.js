@@ -7,12 +7,16 @@ import Onboard from './components/onboarding/Onboard';
 import MyMeal from './components/dashboard/MyMeal';
 import Setting from './components/dashboard/Setting';
 import Authentication from './components/authentication/Authentication';
+import Resetpw from './components/authentication/Resetpw';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isOnboardingComplete, setIsOnboardingComplete] = useState(false);
+const [isResetpwComplete, setIsResetpwComplete] = useState(false);
+const completeResetpw = () => {
+        setIsResetpwComplete(true);}
 
     const completeAuthentication = () => {
         setIsAuthenticated(true);
@@ -31,8 +35,12 @@ const App = () => {
                         path="/authentication" 
                         element={<Authentication onComplete={completeAuthentication} />} 
                     />
-                    
-                   
+                    {/* Route for Reset Password */}
+                    <Route
+                        path="/resetpw"
+                        element={<Resetpw onComplete=
+                            {completeResetpw} />}
+                   />
                     <Route 
                         path="/onboard" 
                         element={<Onboard onComplete={completeOnboarding} />} 

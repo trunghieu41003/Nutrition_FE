@@ -240,11 +240,13 @@ button.back-btn{
         height: 420px;
         padding: 40px 20px; /* Adjusted padding */
     }
-       
-    
     }
 
+.popup.step2 {
 
+    height: 420px;
+   
+}
    
 
    /* Styling for the radio buttons and labels */
