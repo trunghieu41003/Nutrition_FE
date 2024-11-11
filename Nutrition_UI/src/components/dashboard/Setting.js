@@ -321,12 +321,12 @@ useEffect(() => {
         <input
             type="radio"
             id="very_active"
-            checked={activityLevel === "very_active"}
-            onChange={() => setActivityLevel("very_active")}
+            checked={activityLevel === "very active"}
+            onChange={() => setActivityLevel("very active")}
         />
         <div className="label_container">
-            <label htmlFor="very_active" className={activityLevel === "very_active" ? "selected" : ""}>Very active</label>
-            <h5 className={activityLevel === "very_active" ? "selected" : ""}>You have a highly active lifestyle, engaging in intense exercise or physical labor daily.</h5>
+            <label htmlFor="very_active" className={activityLevel === "very active" ? "selected" : ""}>Very active</label>
+            <h5 className={activityLevel === "very active" ? "selected" : ""}>You have a highly active lifestyle, engaging in intense exercise or physical labor daily.</h5>
         </div>
     </div>
 </div>

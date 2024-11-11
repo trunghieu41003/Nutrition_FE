@@ -10,7 +10,7 @@ import Authentication from './components/authentication/Authentication';
 import Resetpw from './components/authentication/Resetpw';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-
+import { DateProvider } from './components/dashboard/DateContext';
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isOnboardingComplete, setIsOnboardingComplete] = useState(false);
@@ -68,7 +68,10 @@ const completeResetpw = () => {
                                 <>
                                     <SideBar />
                                     <Header />
+                                    <DateProvider>
                                     <Dashboard />
+                                   </DateProvider>
+                                    
                                 </>
                             ) : (
                                 <Navigate to="/authentication" />
@@ -82,7 +85,9 @@ const completeResetpw = () => {
                                 <>
                                     <SideBar />
                                     <Header />
-                                    <MyMeal />
+                                    <DateProvider>
+                                      <MyMeal />
+                                   </DateProvider>
                                 </>
                             ) : (
                                 <Navigate to="/authentication" />

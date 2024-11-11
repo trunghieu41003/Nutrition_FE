@@ -72,7 +72,7 @@ const Header = () => {
         <div className="header">
             <div className="hamburger-container">
                 <div className="hamburger" />
-                <div className="header-title">Dashboard</div>
+                <div className="header-title">Nutritioners</div>
             </div>
 
             <div className="avatar-container" onClick={toggleDropdown}>
